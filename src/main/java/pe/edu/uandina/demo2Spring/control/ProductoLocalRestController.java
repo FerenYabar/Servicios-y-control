@@ -33,10 +33,14 @@ public class ProductoLocalRestController {
     }
 
     @PutMapping("productolocal/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public ProductoLocal actualizar(@RequestBody ProductoLocal productoLocal, @PathVariable Long id){
         ProductoLocal productoLocalOriginal = productoLocalService.findById(id);
         productoLocalOriginal.setPrecioProductoLocal(productoLocal.getPrecioProductoLocal());
         return productoLocalService.save(productoLocalOriginal);
+    }
+    @DeleteMapping("/productolocal/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void  eliminar(@PathVariable Long id){
+        productoLocalService.delete(id);
     }
 }

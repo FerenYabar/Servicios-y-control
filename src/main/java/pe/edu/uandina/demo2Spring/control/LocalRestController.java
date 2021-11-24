@@ -32,7 +32,6 @@ public class LocalRestController {
     }
 
     @PutMapping("/local/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Local actualizar(@RequestBody Local local,@PathVariable Long id){
         Local localOriginal = localService.findById(id);
         localOriginal.setNombreLocal(local.getNombreLocal());
@@ -40,6 +39,7 @@ public class LocalRestController {
     }
 
     @DeleteMapping("/local/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Long id){
         localService.delete(id);
     }
