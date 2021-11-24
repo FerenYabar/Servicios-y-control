@@ -41,4 +41,7 @@ public class DetalleReservaRestController {
         detalleReservaNueva.setTieneReserva(detalleReserva.getTieneReserva());
         return detalleReservaService.save(detalleReservaNueva);
     }
+
+    @DeleteMapping("/detallereserva/{id}")
+    public void eliminar(@PathVariable Long id){detalleReservaService.delete(id);}
 }

@@ -1,5 +1,7 @@
 package pe.edu.uandina.demo2Spring.modelo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,20 +17,25 @@ public class Local {
     private String nombreLocal ;
     @Column(name="ubicacionlocal")
     private String ubicacionLocal ;
+    @Column (name="ruclocal")
+    private String ruclocal;
     @Column(name="contrasena")
     private String contrasena;
     @OneToMany(mappedBy = "tieneLocal")
+    @JsonManagedReference
     private List<Reserva> reservas;
     @OneToMany(mappedBy = "tieneLocal")
+    @JsonManagedReference
     private List<ProductoLocal> productoLocales;
 
     public Local() {
     }
 
-    public Local(long codLocal, String nombreLocal, String ubicacionLocal, String contrasena, List<Reserva> reservas, List<ProductoLocal> productoLocales) {
+    public Local(long codLocal, String nombreLocal, String ubicacionLocal, String ruclocal, String contrasena, List<Reserva> reservas, List<ProductoLocal> productoLocales) {
         this.codLocal = codLocal;
         this.nombreLocal = nombreLocal;
         this.ubicacionLocal = ubicacionLocal;
+        this.ruclocal = ruclocal;
         this.contrasena = contrasena;
         this.reservas = reservas;
         this.productoLocales = productoLocales;
@@ -87,6 +94,12 @@ public class Local {
         this.productoLocales = productoLocales;
     }
 
+    public String getRuclocal() {
+        return ruclocal;
+    }
 
+    public void setRuclocal(String ruclocal) {
+        this.ruclocal = ruclocal;
+    }
 }
 
